@@ -1,5 +1,5 @@
-<?php 
-require_once "src/bd/conexion.php";
+<?php
+require_once dirname(__DIR__)."/bd/conexion.php";
 class Model{
     function __construct()
     {
@@ -8,11 +8,13 @@ class Model{
     function queryUsu(): array{
         $bd = new bd();
         $objResp = [];
-        $mysqli = $bd->con();
-        $query = $mysqli->query('CALL usuarios()'); 
+        $mysqlcon = $bd->con();
+        $query = $mysqlcon->query('CALL usuarios()'); 
         foreach( $query as $fila) {
             array_push($objResp,$fila);
         }
+        $mysqlcon = null;
+        $query = null;
         return $objResp;
     }
 }

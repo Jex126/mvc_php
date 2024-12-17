@@ -1,5 +1,5 @@
 <?php 
-require_once "src/models/usuarios.Model.php";
+require_once dirname(__DIR__)."/models/usuarios.Model.php";
 class controllers{
     function __construct(){
 

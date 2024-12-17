@@ -1,5 +1,5 @@
 <?php
-require_once "src/controllers/controller.Usuario.php";
+require_once (dirname(__DIR__)).'/controllers/controller.Usuario.php';
 class routes{
     function __construct()
     {
@@ -12,6 +12,5 @@ class routes{
         };
     }
 
-   
 }
 ?>
