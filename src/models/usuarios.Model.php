@@ -9,14 +9,11 @@ class Model{
         $bd = new bd();
         $objResp = [];
         $mysqli = $bd->con();
-        if ($resp = $mysqli->query("SELECT * FROM usuarios")) {
-            while ( $fila = $resp->fetch_assoc()) {
-                array_push($objResp,array("nombre"=>$fila["nombre"]));
-            }
+        $query = $mysqli->query('CALL usuarios()'); 
+        foreach( $query as $fila) {
+            array_push($objResp,$fila);
         }
         return $objResp;
     }
 }
-$medel = new Model();
-$medel->queryUsu();
 ?>

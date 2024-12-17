@@ -1,4 +1,5 @@
 <?php 
+    require_once "env.php";
     //Asignación de tipo de contenido
     header("Content-Type:application/json");
     //Incluimos el archivo donde están las rutas
@@ -11,6 +12,5 @@
     $method = $_SERVER['REQUEST_METHOD'];
     //agregamos el enrutador de la ruta raíz
     $router->routeRaiz($uri,$method);
-
     
 ?>
