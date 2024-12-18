@@ -8,8 +8,13 @@ class bd{
     function con(){
         $usuario = $_ENV[0]["DB_USER"];
         $pass = $_ENV[0]["DB_PASS"];
-        $mysqlcon = new PDO('mysql:host=localhost;dbname=itp_share',$usuario,$pass);
+        $name = $_ENV[0]["DB_NAME"];
+        try{
+        $mysqlcon = new PDO("mysql:host=localhost;dbname=$name",$usuario,$pass);
         return $mysqlcon;
+        }catch(PDOException $ex){
+            die("Error al establecer conexión con la base de datos $_ENV[0]['DB_NAME']: ".$ex);
+        }
     }
 }
 

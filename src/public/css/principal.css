@@ -1,0 +1,58 @@
+#tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 10px; /* Solo redondea las esquinas externas de la tabla */
+    overflow: hidden; /* Asegura que las celdas no sobresalgan de las esquinas redondeadas */
+}
+
+#tabla th, #tabla td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#tabla th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#tabla tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabla tr:hover {
+    background-color: #ddd;
+}
+
+#tabla td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* Redondear solo las esquinas de la tabla */
+#tabla thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+#tabla thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+#tabla tfoot td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+#tabla tfoot td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* Para las celdas del cuerpo de la tabla, no redondear las esquinas */
+#tabla tbody td:first-child {
+    border-left: none;
+}
+
+#tabla tbody td:last-child {
+    border-right: none;
+}

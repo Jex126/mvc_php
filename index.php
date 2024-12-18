@@ -1,7 +1,7 @@
 <?php 
     require_once dirname(__FILE__)."/env.php";
     //Asignación de tipo de contenido
-    header("Content-Type:application/json");
+    //header("Content-Type:application/json");
     //Incluimos el archivo donde están las rutas
     require_once dirname(__FILE__)."/src/routes/routes.php";
     //Creamos el enrutador

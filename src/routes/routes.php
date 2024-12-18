@@ -8,6 +8,7 @@ class routes{
         $controller = new controllers();
         match($uri){
             '/usuarios' =>$controller->respUsu($method),
+            '/' =>$controller->respPrin($method),
             default =>$controller->resp404($method),
         };
     }
