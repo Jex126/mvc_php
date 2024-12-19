@@ -9,6 +9,7 @@ class routes{
         match($uri){
             '/usuarios' =>$controller->respUsu($method),
             '/' =>$controller->respPrin($method),
+            '/formulario'=>$controller->form($method),
             default =>$controller->resp404($method),
         };
     }

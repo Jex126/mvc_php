@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Tabla Usuarios</h1>
+    <button id='form' type="button" onclick="window.location.href='http://localhost/formulario'">formulario</button>
+    
     <table id="tabla">
         <tr>
             <th>id</th>
@@ -18,6 +20,7 @@
             <th>Imagen</th>
         </tr>
     </table>
+
     <script src="../src/public/js/usuarios.js"></script>
 </body>
 </html>
