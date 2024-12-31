@@ -43,7 +43,8 @@ function agregar(){
     $nombre = htmlspecialchars($data['nombre'], ENT_QUOTES, 'UTF-8');
     $correo = htmlspecialchars($data['correo'], ENT_QUOTES, 'UTF-8');
     $matricula = htmlspecialchars($data['matricula'], ENT_QUOTES, 'UTF-8');
-    $contrasena = htmlspecialchars($data['contrasena'], ENT_QUOTES, 'UTF-8');
+    //Encriptación de la contraseña para no ser alacenada en texto plano 
+    $contrasena = password_hash(htmlspecialchars($data['contrasena'], ENT_QUOTES, 'UTF-8'),PASSWORD_BCRYPT);
     $imagen = htmlspecialchars($data['imagen'], ENT_QUOTES, 'UTF-8');
     echo $model_us->insUsu($nombre,$correo,$matricula,$contrasena,$imagen);
 }
