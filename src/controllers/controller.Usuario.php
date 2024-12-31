@@ -6,10 +6,6 @@ class controllers{
     }
     //Respuesta para la ruta /usuarios
     function respUsu($metodo){
-    header("Content-Type:application/json");
-    header("Access-Control-Allow-Origin: *");  // Permite el acceso desde cualquier origen
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");  // Métodos permitidos
-    header("Access-Control-Allow-Headers: Content-Type, Authorization");  
     $model_us = new Model();
     $queryRes = $model_us->queryUsu();
     if($metodo === 'GET'){
@@ -36,14 +32,19 @@ function form($method){
 }
 
 function agregar(){
+    //creamos un objeto de nuestro modelo
     $model_us = new Model();
+    //obtenemos los datos del body de la petición
     $body = file_get_contents('php://input');
+    //decode de los datos json obtenidos del body
     $data = json_decode($body, true);
-    $nombre = $data['nombre'];
-    $correo = $data['correo'];
-    $matricula = $data['matricula'];
-    $contrasena = $data['contrasena'];
-    $imagen = $data['imagen'];
+    //almacenamiento de los datos de manera individual
+    //junto con la sanitización de cada uno para evitar XSS con htmlsepecialchars
+    $nombre = htmlspecialchars($data['nombre'], ENT_QUOTES, 'UTF-8');
+    $correo = htmlspecialchars($data['correo'], ENT_QUOTES, 'UTF-8');
+    $matricula = htmlspecialchars($data['matricula'], ENT_QUOTES, 'UTF-8');
+    $contrasena = htmlspecialchars($data['contrasena'], ENT_QUOTES, 'UTF-8');
+    $imagen = htmlspecialchars($data['imagen'], ENT_QUOTES, 'UTF-8');
     echo $model_us->insUsu($nombre,$correo,$matricula,$contrasena,$imagen);
 }
 ?>

@@ -28,7 +28,7 @@
         <label for="imagen">Imagen</label>
         <input type="text" id="imagen" name="imagen">
         
-        <button id="agregar" type="button" onclick="add()">Agregar</button>
+        <button id="agregar" type="button" onclick="accion('POST')">Agregar</button>
         <button id="modificar" type="button">Modificar</button>
         <button id="eliminar" type="button">Eliminar</button>
     </form>
