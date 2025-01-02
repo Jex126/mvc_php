@@ -11,7 +11,7 @@
     <button type="button" onclick="window.location.href='http://localhost'">Regresar</button>
 <form id="formu" >
         <label for="id">ID</label>
-        <input type="text" id="id" name="id">
+        <input type="text" id="id_usuario" name="id_usuario">
         
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre">
@@ -29,7 +29,7 @@
         <input type="text" id="imagen" name="imagen">
         
         <button id="agregar" type="button" onclick="accion('POST')">Agregar</button>
-        <button id="modificar" type="button">Modificar</button>
+        <button id="modificar" type="button" onclick="accion('PUT')">Modificar</button>
         <button id="eliminar" type="button">Eliminar</button>
     </form>
 </body>

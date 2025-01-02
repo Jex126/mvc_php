@@ -16,6 +16,7 @@ function form($method){
     match($method){
         'GET' => include(dirname(__DIR__)."/views/form.php"),
         'POST' => agregar(),
+        'PUT' => actualizar(),
     };
 }
     function respPrin($method){
@@ -47,5 +48,24 @@ function agregar(){
     $contrasena = password_hash(htmlspecialchars($data['contrasena'], ENT_QUOTES, 'UTF-8'),PASSWORD_BCRYPT);
     $imagen = htmlspecialchars($data['imagen'], ENT_QUOTES, 'UTF-8');
     echo $model_us->insUsu($nombre,$correo,$matricula,$contrasena,$imagen);
+}
+
+function actualizar(){
+    //creamos un objeto de nuestro modelo
+    $model_us = new Model();
+    //obtenemos los datos del body de la petición
+    $body = file_get_contents('php://input');
+    //decode de los datos json obtenidos del body
+    $data = json_decode($body, true);
+    //almacenamiento de los datos de manera individual
+    //junto con la sanitización de cada uno para evitar XSS con htmlsepecialchars
+    $id = $data['id_usuario'];
+    $nombre = htmlspecialchars($data['nombre'], ENT_QUOTES, 'UTF-8');
+    $correo = htmlspecialchars($data['correo'], ENT_QUOTES, 'UTF-8');
+    $matricula = htmlspecialchars($data['matricula'], ENT_QUOTES, 'UTF-8');
+    //Encriptación de la contraseña para no ser alacenada en texto plano 
+    $contrasena = password_hash(htmlspecialchars($data['contrasena'], ENT_QUOTES, 'UTF-8'),PASSWORD_BCRYPT);
+    $imagen = htmlspecialchars($data['imagen'], ENT_QUOTES, 'UTF-8');
+    echo $model_us->actUsu($id,$nombre,$correo,$matricula,$contrasena,$imagen);
 }
 ?>
